@@ -13,8 +13,8 @@
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-server</artifactId>
-            <version>9.4.4.v20170414</version>
+            <version>9.3.0.M1</version>
         </dependency>
-       <!--adaddaa-->
+
     </dependencies>
 </project>
