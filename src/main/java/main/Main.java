@@ -13,12 +13,13 @@ public class Main {
         MirrorRequestsServlet mirrorRequestsServlet = new MirrorRequestsServlet();
 
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
-        context.addServlet(new ServletHolder(mirrorRequestsServlet), "/mirror");
+        context.addServlet(new ServletHolder(mirrorRequestsServlet), "/mirror/*");
 
         Server server = new Server(8080);
         server.setHandler(context);
 
         server.start();
+        java.util.logging.Logger.getGlobal().info("Server started");
         server.join();
     }
 }

@@ -20,7 +20,8 @@ public class MirrorRequestsServlet extends HttpServlet {
         Map<String, Object> pageVariables = createPageVariablesMap(request);
         pageVariables.put("message", "");
 
-        response.getWriter().println(PageGenerator.instance().getPage("page.html", pageVariables));
+        //response.getWriter().println(PageGenerator.instance().getPage("page.html", pageVariables));
+        response.getWriter().println(request.getParameter("key"));
 
         response.setContentType("text/html;charset=utf-8");
         response.setStatus(HttpServletResponse.SC_OK);
@@ -43,15 +44,19 @@ public class MirrorRequestsServlet extends HttpServlet {
         pageVariables.put("message", message == null ? "" : message);
 
         response.getWriter().println(PageGenerator.instance().getPage("page.html", pageVariables));
+        //response.getWriter().println(request.getParameter("key"));
     }
+
 
     private static Map<String, Object> createPageVariablesMap(HttpServletRequest request) {
         Map<String, Object> pageVariables = new HashMap<>();
-        pageVariables.put("method", request.getMethod());
-        pageVariables.put("URL", request.getRequestURL().toString());
-        pageVariables.put("pathInfo", request.getPathInfo());
-        pageVariables.put("sessionID", request.getSession().getId());
-        pageVariables.put("parameters", request.getParameterMap().toString());
+//        pageVariables.put("method", request.getMethod());
+//        pageVariables.put("URL", request.getRequestURL().toString());
+//        pageVariables.put("pathInfo", request.getPathInfo() != null ? request.getPathInfo() : "");
+//        pageVariables.put("sessionId", request.getSession().getId());
+//        pageVariables.put("parameters", request.getParameterMap().toString());
+        pageVariables.put("key", request.getParameter("key") != null ? request.getParameter("key") : "");
+
         return pageVariables;
     }
 }
